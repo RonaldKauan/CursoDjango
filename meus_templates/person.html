@@ -9,11 +9,18 @@
 </head>
 <body>
     <ul>
-    {% for person in persons  %}
+        {% for person in persons  %}
 
-    <li>{{ person.first_name }}</li>
+            <li>
+                <a href="{% url 'person_update' person.id %}">{{ person.first_name }}</a>
+                <a href="{% url 'person_delete' person.id %}">Deletar</a>
+            </li>
 
-    {% endfor %}
+        {% endfor %}
     </ul>
+
+    <br>
+
+    <a href="{% url 'person_new' %}"> Novo cliente</a>
 </body>
 </html>
