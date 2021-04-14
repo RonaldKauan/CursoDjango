@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+
+    <p>Ola {{ user.username }}</p>
+    <a href="{% url 'logout' %}">Sair</a>
+
     <ul>
         {% for person in persons  %}
 
