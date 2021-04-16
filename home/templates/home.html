@@ -5,24 +5,29 @@
 {% block main %}
 
     <div class="row">
-        <div class="col-sm">
+        <div class="col">
 
         </div>
-        <div class="col-sm">
-          <h1>Seja bem vindo</h1>
-        </div>
-        <div class="col-sm">
+        <div class="col-md-">
+            <h1>Seja bem-vindo</h1>
             {% if user.is_authenticated %}
-                <p>Ola {{ user.username }}</p>
-                <a href="{% url 'logout' %}" class="btn btn-light">Sair</a>
+                <center> <p>Olá {{ user.username }}</p>
+                <a href="{% url 'logout' %}" class="btn btn-light">Sair</a> </center>
             {% else %}
-                <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
+                <center><a href="{% url 'login' %}" class="btn btn-light">Entrar</a></center>
             {% endif %}
+        </div>
+        <div class="col">
+
         </div>
     </div>
 
+{% endblock %}
 
-
-
-
+{% block footer %}
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Desenvolvido web com Django 3.x</span>
+      </div>
+    </footer>
 {% endblock %}
