@@ -15,7 +15,7 @@
                 {% for person in persons  %}
 
                     <li class="list-group-item">
-                        <a href="{% url 'person_update' person.id %}">{{ person.first_name }}</a>
+                        <a href="{% url 'person_update' person.id %}">{{ person.nome }}</a>
                         <a href="{% url 'person_delete' person.id %}" class="trash-item">
                             <i class="far fa-trash-alt"></i>
                         </a>
@@ -26,7 +26,7 @@
 
             <br>
 
-            <a href="{% url 'person_new' %}" class="btn btn-primary"> Novo cliente</a>
+            <center><a href="{% url 'person_new' %}" class="btn btn-primary"> Novo cliente</a></center>
 
         </div>
 
