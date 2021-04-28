@@ -4,10 +4,30 @@ from .models import Person
 from .forms import PersonForm
 
 
+
 @login_required
 def persons_list(request):
-    persons = Person.objects.all()
-    return render(request, 'person.html', {'persons': persons})
+
+    nome = request.GET.get('nome', None)
+    sobrenome = request.GET.get('sobrenome', None)
+
+    if nome and sobrenome:
+        persons = Person.objects.filter(nome__icontains=nome) | Person.objects.filter(sobrenome__icontains=sobrenome)
+        Person.usuario = True
+        return render(request, 'person.html', {'persons': persons})
+    elif nome:
+        persons = Person.objects.filter(nome__icontains=nome)
+        Person.usuario = True
+        return render(request, 'person.html', {'persons': persons})
+    elif sobrenome:
+        persons = Person.objects.filter(sobrenome__icontains=sobrenome)
+        Person.usuario = True
+        return render(request, 'person.html', {'persons': persons})
+    else:
+        noUser = Person.objects.all()
+        Person.usuario = False
+        return render(request, 'person.html', {'persons': noUser})
+
 
 
 @login_required

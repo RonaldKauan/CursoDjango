@@ -14,13 +14,21 @@
     <script src="https://kit.fontawesome.com/c6513f34c1.js" crossorigin="anonymous"></script>
     <title>{% block title %} {% endblock %}</title>
 </head>
-<body>
+<body style="background:#313131">
+
+
     <div class="container">
-        {% block main %}
-        {% endblock %}
+        <h1></h1>
+
+        <div class="jumbotron" style="background:#454545">
+            {% block main %}
+            {% endblock %}
+        </div>
+
     </div>
 
     {% block footer %}
     {% endblock %}
+
 </body>
 </html>

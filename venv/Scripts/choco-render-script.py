@@ -1,4 +1,4 @@
-#!c:\users\pc\projetofinal\gestaoclientes\venv\scripts\python.exe
+#!"C:\Users\kauan\OneDrive\Área de Trabalho\CursoDjango\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'Choco==1.0.5','console_scripts','choco-render'
 import re
 import sys

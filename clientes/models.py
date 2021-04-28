@@ -34,7 +34,7 @@ class Venda(models.Model):
     valor = models.DecimalField(max_digits=5, decimal_places=2)
     desconto = models.DecimalField(max_digits=5, decimal_places=2)
     impostos = models.DecimalField(max_digits=5, decimal_places=2)
-    pessoa = models.ForeignKey(Person, null=True, blank=True, on_delete=models.PROTECT)
+    pessoa = models.ForeignKey(Person, null=True, blank=True, on_delete=models.CASCADE)
     produtos = models.ManyToManyField(Produto, blank=True)
 
     def __str__(self):

@@ -5,7 +5,7 @@
 
 {% block main %}
 
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" style="font-family:courier; color:white">
         {% csrf_token %}
         {{ form|bootstrap }}
         <button type="submit" class="btn btn-primary">Salvar</button>

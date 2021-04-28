@@ -1,4 +1,4 @@
-#!c:\users\pc\projetofinal\gestaoclientes\venv\scripts\python.exe
+#!"C:\Users\kauan\OneDrive\Área de Trabalho\CursoDjango\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'gunicorn==20.1.0','console_scripts','gunicorn'
 import re
 import sys
