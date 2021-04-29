@@ -4,30 +4,43 @@ from .models import Person
 from .forms import PersonForm
 
 
-
 @login_required
 def persons_list(request):
-
     nome = request.GET.get('nome', None)
     sobrenome = request.GET.get('sobrenome', None)
 
     if nome and sobrenome:
-        persons = Person.objects.filter(nome__icontains=nome) | Person.objects.filter(sobrenome__icontains=sobrenome)
-        Person.usuario = True
-        return render(request, 'person.html', {'persons': persons})
+        nome = nome.lower()
+        sobrenome = sobrenome.lower()
+        pessoas = {}
+
+        for elemento in Person.objects.values():
+            pessoas[elemento['id']] = elemento['nome'].lower()
+
+        listaPessoasErradas = []
+        listaPessoas = []
+
+        for pessoa in pessoas.keys():
+            listaPessoas.append(pessoa)
+            if pessoas[pessoa] != nome:
+                listaPessoasErradas.append(pessoa)
+
+        if listaPessoas == listaPessoasErradas:
+            return render(request, 'person.html', {'persons':'noUser'})
+
+        else:
+            persons = Person.objects.filter(sobrenome__icontains=sobrenome.lower()).exclude(id__in=listaPessoasErradas)
+            return render(request, 'person.html', {'persons': persons})
+
     elif nome:
         persons = Person.objects.filter(nome__icontains=nome)
-        Person.usuario = True
         return render(request, 'person.html', {'persons': persons})
     elif sobrenome:
         persons = Person.objects.filter(sobrenome__icontains=sobrenome)
-        Person.usuario = True
         return render(request, 'person.html', {'persons': persons})
     else:
-        noUser = Person.objects.all()
-        Person.usuario = False
-        return render(request, 'person.html', {'persons': noUser})
-
+        persons = Person.objects.all()
+        return render(request, 'person.html', {'persons': persons})
 
 
 @login_required
