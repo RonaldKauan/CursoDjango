@@ -4,9 +4,33 @@
 
 {% block main %}
 
-    <h1>Tem certeza que deseja deletar {{ person.nome }}? </h1>
+    <h1 style="font-family:courier; color:white">
+        <font size="5">
+            <center>Tem certeza que deseja deletar {{ person.nome }}?</center>
+        </font>
+    </h1>
+    <br>
+    <br>
+    {% if person.foto %}
+        <a href="{{ person.foto.url }}">
+            <img style="width:150px;height:150px;border:1px solid #696969; display:flex; margin:auto;" class="rounded-circle" src="{{ person.foto.url }}" alt="">
+        </a>
+    {% endif %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Deletar</button>
+        <br>
+        <br>
+
+        <center>
+            <button type="submit" class="btn btn-outline-danger" style="font-family:courier">
+                Deletar
+            </button>
+
+            <a href="{% url 'person_list'%}" class="btn btn-outline-success" role="button" style="font-family:courier;">Não Deletar</a>
+        </center>
+
+
+
+    </form>
 
 {% endblock %}

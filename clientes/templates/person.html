@@ -4,6 +4,8 @@
 
 {% block main %}
 
+
+
 <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="col">
 
@@ -30,14 +32,22 @@
                 <h3><center>Listagem de clientes</center></h3>
                 <ul class="list-group">
                     {% for person in persons  %}
+                        <center>
+                            <li class="list-group-item">
+                                {% if person.foto %}
+                                <a href="{{ person.foto.url }}">
+                                    <img align="left" style="width:25px;height:25px;border:1px solid #696969" class="rounded-circle" src="{{ person.foto.url }}" alt="">
+                                </a>
 
-                        <li class="list-group-item">
-                            <a href="{% url 'person_update' person.id %}" style="color:grey">{{ person.nome }} {{ person.sobrenome }}</a>
-                            <a href="{% url 'person_delete' person.id %}" class="trash-item">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
-                        </li>
-
+                                {% endif %}
+                                <center>
+                                <a href="{% url 'person_update' person.id %}" style="color:grey">{{ person.nome }} {{ person.sobrenome }}</a>
+                                <a href="{% url 'person_delete' person.id %}" class="trash-item">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                                </center>
+                            </li>
+                        </center>
                     {% endfor %}
                 </ul>
             {% else %}

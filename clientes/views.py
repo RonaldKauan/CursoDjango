@@ -30,7 +30,16 @@ def persons_list(request):
 
         else:
             persons = Person.objects.filter(sobrenome__icontains=sobrenome.lower()).exclude(id__in=listaPessoasErradas)
-            return render(request, 'person.html', {'persons': persons})
+
+            lista = []
+
+            for elementos in persons:
+                lista.append(elementos)
+
+            if lista == []:
+                return render(request, 'person.html', {'persons': "noUser"})
+            else:
+                return render(request, 'person.html', {'persons': persons})
 
     elif nome:
         persons = Person.objects.filter(nome__icontains=nome)
