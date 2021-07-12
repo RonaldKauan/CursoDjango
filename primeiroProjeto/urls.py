@@ -22,9 +22,12 @@ from .views import fname2
 from clientes import urls as clients_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from clientes.views import Index
 
 urlpatterns = [
     path('hello/', hello),
+    path('lista/', Index),
+    path('', include(clients_urls)),
     path('articles/<int:year>/', articles),
     path('pessoa/<str:nome>/', fname2),
     path('person/', include(clients_urls)),

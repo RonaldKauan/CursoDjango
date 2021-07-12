@@ -1,6 +1,12 @@
 from django.db import models
 
 
+class Nota(models.Model):
+    nome = models.CharField(max_length=50)
+    feito = models.BooleanField(default=False)
+    criado = models.TimeField(auto_now_add=True)
+
+
 class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)

@@ -3,10 +3,16 @@ from .views import persons_list
 from .views import persons_new
 from .views import persons_update
 from .views import persons_delete
+from .views import Index
+from .views import nota_delete
+from .views import instagram
 
 urlpatterns = [
     path('list/', persons_list, name="person_list"),
     path('new/', persons_new, name="person_new"),
     path('update/<int:id>/', persons_update, name="person_update"),
     path('delete/<int:id>/', persons_delete, name="person_delete"),
+    path('notaDelete/<int:id>/', nota_delete, name="nota_delete"),
+    path('', Index),
+    path('instagram/', instagram)
 ]
